@@ -5590,6 +5590,8 @@ in {
 
   nidaqmx = callPackage ../development/python-modules/nidaqmx { };
 
+  nifty7 = callPackage ../development/python-modules/nifty7 { };
+
   Nikola = callPackage ../development/python-modules/Nikola { };
 
   niko-home-control = callPackage ../development/python-modules/niko-home-control { };
