@@ -20526,6 +20526,8 @@ with pkgs;
 
   caf = callPackage ../development/libraries/caf { };
 
+  casacore = callPackage ../development/libraries/science/astronomy/casacore { };
+
   # CGAL 5 has API changes
   cgal_4 = callPackage ../development/libraries/CGAL/4.nix { };
   cgal_5 = callPackage ../development/libraries/CGAL { };
