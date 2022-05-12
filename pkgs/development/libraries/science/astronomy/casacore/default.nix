@@ -1,11 +1,9 @@
-{ lib, stdenv, fetchurl, cmake, gfortran, flex, bison, blas, lapack, readline, fftw, fftwFloat, cfitsio, wcslib, python3, python3Packages, boost }:
-
-# sofa (optional, only for testing casacore measures)
-# hdf5 (optional)
-# numpy (optional)
-# boost-python (optional)
-# ncurses (optional)
-
+{ 
+  lib, stdenv, fetchFromGitHub, cmake,
+  python3, python3Packages,
+  gfortran, flex, bison, blas, lapack, readline, fftw, fftwFloat, cfitsio,
+  wcslib, boost
+}:
 
 let
   boostWithPython = boost.override {
@@ -17,22 +15,25 @@ in stdenv.mkDerivation rec {
   pname = "casacore";
   version = "3.4.0";
 
-  src = fetchurl {
-    url = "https://github.com/casacore/casacore/archive/refs/tags/v" + version + ".tar.gz";
-    sha256 = "MfAq0uJvKbq0pHoqaeBJ17xREISguCYzYOYVc1b5KuE=";
+  src = fetchFromGitHub {
+    owner = "casacore";
+    repo = "casacore";
+    rev = "v" + version;
+    sha256 = "QIl8tHdc1qGOocLGnTu0//BcYi6S3m4Eqo3AN/0rWRU=";
   };
 
-  nativeBuildInputs = [ cmake gfortran flex bison blas lapack readline fftw fftwFloat cfitsio wcslib python3 python3Packages.numpy boostWithPython ];
+  nativeBuildInputs = [ cmake ];
+  buildInputs = [ gfortran flex bison blas lapack readline fftw fftwFloat cfitsio wcslib python3 python3Packages.numpy boostWithPython ];
 
   cmakeFlags = [ "-DBUILD_PYTHON=OFF"
-                 "-DBoost_DEBUG=ON"
                  "-DBUILD_PYTHON3=ON" ];
 
+  outputs = [ "out" "dev" ];
   enableParallelBuilding = true;
 
   meta = with lib; {
     homepage = "http://casacore.github.io/casacore";
-    description = "FIXME";
+    description = "A suite of C++ libraries for radio astronomy data processing";
     maintainers = with maintainers; [ parras ];
     license = licenses.lgpl2;
   };
