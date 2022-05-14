@@ -40787,6 +40787,8 @@ with pkgs;
     openssl = openssl_1_1;
   };
 
+  wsclean = callPackage ../applications/science/astronomy/wsclean { };
+
   wxsqlite3 = callPackage ../development/libraries/wxsqlite3 {
     wxGTK = wxGTK32;
     inherit (darwin.apple_sdk.frameworks) Cocoa;
