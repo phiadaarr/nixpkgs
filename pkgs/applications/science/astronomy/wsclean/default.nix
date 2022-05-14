@@ -22,11 +22,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
   buildInputs = [ hdf5-cpp casacore cfitsio blasAlt fftw fftwFloat python3 python3Packages.pybind11 boost gsl ];
-  preConfigure = "export OPENBLAS_NUM_THREADS=1; echo $OPENBLAS_NUM_THREADS;";
-  preBuild = "echo build";
-
-  # cmakeFlags = [ "-DBUILD_PYTHON=OFF"
-  #                "-DBUILD_PYTHON3=ON" ];
+  preConfigure = "export OPENBLAS_NUM_THREADS=1";
 
   enableParallelBuilding = true;
 
