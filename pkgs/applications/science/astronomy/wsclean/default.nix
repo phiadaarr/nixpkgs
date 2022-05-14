@@ -1,7 +1,8 @@
 { 
   lib, stdenv, fetchFromGitLab, cmake,
   hdf5-cpp, casacore, blas, python3, python3Packages,
-  openblas, fftw, fftwFloat, cfitsio, wcslib, boost, gsl
+  openblas, fftw, fftwFloat, cfitsio, wcslib, boost, gsl,
+  everybeam  # optional
 }:
 
 stdenv.mkDerivation rec {
@@ -23,7 +24,8 @@ stdenv.mkDerivation rec {
   buildInputs = [ hdf5-cpp boost
                   casacore cfitsio
 		  fftw fftwFloat blasAlt gsl
-		  python3 python3Packages.pybind11 ];
+		  python3 python3Packages.pybind11
+		  everybeam ];
   preConfigure = "export OPENBLAS_NUM_THREADS=1";
 
   enableParallelBuilding = true;
