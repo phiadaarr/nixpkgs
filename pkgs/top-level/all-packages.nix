@@ -34863,6 +34863,8 @@ with pkgs;
 
   wraith = callPackage ../applications/networking/irc/wraith { };
 
+  wsclean = callPackage ../applications/science/astronomy/wsclean { };
+
   wxsqlite3 = callPackage ../development/libraries/wxsqlite3 {
     wxGTK = wxGTK30;
     inherit (darwin.apple_sdk.frameworks) Cocoa;
