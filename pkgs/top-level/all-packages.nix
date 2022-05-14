@@ -17049,6 +17049,8 @@ with pkgs;
 
   entt = callPackage ../development/libraries/entt { };
 
+  everybeam = callPackage ../development/libraries/science/astronomy/everybeam { };
+
   libepoxy = callPackage ../development/libraries/libepoxy {
     inherit (darwin.apple_sdk.frameworks) Carbon OpenGL;
   };
