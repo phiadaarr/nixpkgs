@@ -11,7 +11,7 @@
 # This flag builds a single-threaded OpenBLAS using the flags
 # stated in thre.
 , singleThreaded ? false
-, parrasMode ? false
+, withoutOpenMP ? false
 , buildPackages
 # Select a specific optimization target (other than the default)
 # See https://github.com/OpenMathLib/OpenBLAS/blob/develop/TargetList.txt
@@ -219,7 +219,11 @@ stdenv.mkDerivation rec {
     USE_THREAD = false;
     USE_LOCKING = true; # available with openblas >= 0.3.7
     USE_OPENMP = false; # openblas will refuse building with both USE_OPENMP=1 and USE_THREAD=0
-  }) // (lib.optionalAttrs parrasMode {USE_THREADS = true; USE_LOCKING=true; USE_OPENMP=false;}));
+  }) // (lib.optionalAttrs withoutOpenMP {
+    USE_THREADS = true;
+    USE_LOCKING = true;
+    USE_OPENMP = false;
+  }));
 
   doCheck = true;
   checkTarget = "tests";
