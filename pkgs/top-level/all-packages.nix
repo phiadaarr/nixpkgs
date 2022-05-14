@@ -20845,6 +20845,8 @@ with pkgs;
 
   epoll-shim = callPackage ../development/libraries/epoll-shim { };
 
+  everybeam = callPackage ../development/libraries/science/astronomy/everybeam { };
+
   libepoxy = callPackage ../development/libraries/libepoxy {
     inherit (darwin.apple_sdk.frameworks) Carbon OpenGL;
   };
