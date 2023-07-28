@@ -1,0 +1,28 @@
+diff --git a/setup.cfg b/setup.cfg
+index 33e56556..ed316f0a 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -22,8 +22,6 @@ classifiers =
+ zip_safe = False
+ packages = find:
+ include_package_data = True
+-# DON'T CHANGE THE FOLLOWING LINE! IT WILL BE UPDATED BY PYSCAFFOLD!
+-setup_requires = pyscaffold>=3.2a0,<3.3a0
+ # Add here dependencies of your project (semicolon/line-separated), e.g.
+ # install_requires = numpy; scipy
+ # Require a specific Python version, e.g. Python 2.7 or >= 3.4
+@@ -109,14 +107,3 @@ exclude =
+     dist
+     .eggs
+     docs/conf.py
+-
+-[pyscaffold]
+-# PyScaffold's parameters when the project was created.
+-# This will be used when updating. Do not change!
+-version = 3.2.3
+-package = pyannote-audio
+-extensions =
+-    markdown
+-    no_skeleton
+-    pre_commit
+-    dsproject
