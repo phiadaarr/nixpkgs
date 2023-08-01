@@ -8589,7 +8589,7 @@ self: super: with self; {
 
   pyannotate = callPackage ../development/python-modules/pyannotate { };
 
-  pyannotate-audio = callPackage ../development/python-modules/pyannotate-audio { };
+  pyannote-audio = callPackage ../development/python-modules/pyannote-audio { };
 
   pyarlo = callPackage ../development/python-modules/pyarlo { };
 
