@@ -8,6 +8,8 @@
 , CoreGraphics
 , CoreML
 , CoreVideo
+, cudaSupport ? false
+, cudaPackages
 }:
 
 stdenv.mkDerivation rec {
@@ -29,12 +31,16 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  buildInputs = [ SDL2 ] ++ lib.optionals stdenv.isDarwin [ Accelerate CoreGraphics CoreML CoreVideo ];
+  buildInputs = [ SDL2 ]
+    ++ lib.optionals stdenv.isDarwin [ Accelerate CoreGraphics CoreML CoreVideo ]
+    ++ lib.optionals cudaSupport [ cudaPackages.libcublas cudaPackages.cudatoolkit ];
 
-  env = lib.optionalAttrs stdenv.isDarwin {
-    WHISPER_COREML = "1";
-    WHISPER_COREML_ALLOW_FALLBACK = "1";
-  };
+    env = lib.optionalAttrs stdenv.isDarwin {
+      WHISPER_COREML = "1";
+      WHISPER_COREML_ALLOW_FALLBACK = "1";
+    } ++ lib.optionals cudaSupport {
+      WHISPER_CUBLAS = "1";
+    };
 
   makeFlags = [ "main" "stream" ];
 
