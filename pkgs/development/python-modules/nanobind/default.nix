@@ -24,14 +24,14 @@
 }:
 buildPythonPackage rec {
   pname = "nanobind";
-  version = "2.1.0";
+  version = "2.2.0";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "wjakob";
     repo = "nanobind";
     rev = "refs/tags/v${version}";
-    hash = "sha256-AO/EHx2TlXidalhPb+xuUchaek4ki7fDExu2foBgUp0=";
+    hash = "sha256-HtZfpMVz/7VMVrFg48IkitK6P3tA+swOeaLLiKguXXk=";
     fetchSubmodules = true;
   };
 
