@@ -27,7 +27,7 @@
 
 buildPythonPackage rec {
   pname = "nifty8";
-  version = "8.5.4";
+  version = "8.5.6";
   pyproject = true;
 
   src = fetchFromGitLab {
@@ -35,7 +35,7 @@ buildPythonPackage rec {
     owner = "ift";
     repo = "nifty";
     tag = "v${version}";
-    hash = "sha256-Q42ZhQ/T8JmkG75BexevbvVKQqfDmMG6+oTYR0Ze718=";
+    hash = "sha256-DQPCLRVl/UE1zv7nUZtPJa/sRwmAkHgrcDsxRa/ndX4=";
   };
 
   build-system = [ setuptools ];
